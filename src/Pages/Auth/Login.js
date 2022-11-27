@@ -1,30 +1,45 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
-
+import { AuthContext } from '../../Context/AuthProvider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useToken from '../../Hooks/useToken';
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
 
+    const { signIn } = useContext(AuthContext);
+    const { handleSubmit, register, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');
+    const [loginUserEmail, setLoginUserEmail] = useState('');
+    const [token] = useToken(loginUserEmail);
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const handleLogin = data => {
-        console.log(data);
-        setLoginError('');
-        // signIn(data.email, data.password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         console.log(user);
-        //         setLoginUserEmail(data.email);
-        //     })
-        //     .catch(error => {
-        //         console.log(error.message)
-        //         setLoginError(error.message);
-        //     });
+    const from = location.state?.from?.pathname || '/';
+
+    if (token) {
+        navigate(from, { replace: true });
     }
 
-    const { handleSubmit, register, formState: { errors } } = useForm();
+    const handleLogin = data => {
+        //console.log(data);
+        setLoginError('');
+        signIn(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                //console.log(user);
+                toast.success("Successfully Login");
+                setLoginUserEmail(user.email);
+
+            })
+            .catch(error => {
+                setLoginError(error.message);
+            });
+    }
+
+
     return (
         <div className='h-[500px] flex justify-center items-center'>
             <div className='w-96 p-7'>

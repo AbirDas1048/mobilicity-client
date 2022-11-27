@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import Home from "../Pages/Home/Home/Home";
+import PageNotFound from "../Pages/Shared/Error/PageNotFound";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/*',
+                element: <PageNotFound></PageNotFound>
             },
         ]
     }
