@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import logo from '../../../Assets/logo.png';
 import { AuthContext } from '../../../Context/AuthProvider';
 import useAdmin from '../../../Hooks/useAdmin';
+import useSeller from '../../../Hooks/useSeller';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email);
+    const [isSeller] = useSeller(user?.email);
 
     const handleLogout = () => {
         logOut()
@@ -34,6 +36,9 @@ const Navbar = () => {
                     <>
                         {
                             isAdmin && <li><Link to="/adminDashboard">Dashboard</Link></li>
+                        }
+                        {
+                            isSeller && <li><Link to="/sellerDashboard">Dashboard</Link></li>
                         }
 
                         <li><button onClick={handleLogout}>LogOut</button></li>

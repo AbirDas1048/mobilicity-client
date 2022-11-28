@@ -1,15 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import SellerDashboardLayout from "../Layout/SellerDashboardLayout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import AllBuyer from "../Pages/Dashboard/Admin/AllBuyer";
 import AllSeller from "../Pages/Dashboard/Admin/AllSeller";
+import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
+import MyProduct from "../Pages/Dashboard/Seller/MyProduct";
 import Home from "../Pages/Home/Home/Home";
 import DisplayError from "../Pages/Shared/Error/DisplayError";
 import PageNotFound from "../Pages/Shared/Error/PageNotFound";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import SellerRoute from "./SellerRoute/SellerRoute";
 
 const router = createBrowserRouter([
     {
@@ -55,24 +59,25 @@ const router = createBrowserRouter([
                 path: '/adminDashboard/allSeller',
                 element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
-            // {
-            //     path: '/dashboard/allUsers',
-            //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-            // },
-            // {
-            //     path: '/dashboard/addDoctor',
-            //     element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
-            // },
-            // {
-            //     path: '/dashboard/manageDoctors',
-            //     element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
-            // },
-            // {
-            //     path: '/dashboard/payment/:id',
-            //     loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`),
-            //     element: <Payment></Payment>
-
-            // },
+        ]
+    },
+    {
+        path: '/sellerDashboard',
+        element: <PrivateRoute><SellerRoute><SellerDashboardLayout></SellerDashboardLayout></SellerRoute></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
+        children: [
+            {
+                path: '/sellerDashboard',
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/sellerDashboard/addProduct',
+                element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/sellerDashboard/myProduct',
+                element: <SellerRoute><MyProduct></MyProduct></SellerRoute>
+            },
         ]
     }
 ])
