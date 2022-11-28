@@ -47,6 +47,24 @@ const AllSeller = () => {
 
             })
     }
+
+    const handleVerify = (id) => {
+        //console.log(id);
+        fetch(`http://localhost:5000/admin/sellers/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
+                    toast.success('Successfully Updated');
+                    refetch();
+                }
+            })
+    }
     return (
         <div>
             <h2 className='text-3xl text-center my-3'>All Sellers</h2>
@@ -58,6 +76,7 @@ const AllSeller = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -68,6 +87,14 @@ const AllSeller = () => {
                                     <th>{++i}</th>
                                     <td>{seller.name}</td>
                                     <td>{seller.email}</td>
+                                    <td>
+                                        {
+                                            seller?.verified ?
+                                                <p className='text-success font-bold'>Verified</p>
+                                                :
+                                                <button onClick={() => handleVerify(seller._id)} className='btn btn-xs btn-warning'>Make verified</button>
+                                        }
+                                    </td>
                                     <td>
                                         <label onClick={() => setDeletingSeller(seller)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
                                     </td>
