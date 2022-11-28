@@ -48,7 +48,7 @@ const Navbar = () => {
             </label>
         </>
     return (
-        <div className="navbar bg-base-100 bg-opacity-90 flex justify-between sticky top-0 shadow-sm">
+        <div className="navbar flex justify-between">
             {/* <div className="sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-sm"> */}
             <div className="navbar-start">
                 <div className="dropdown">
@@ -70,9 +70,11 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            {/* <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-            </label> */}
+            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
+            </label>
+
+
         </div >
 
 

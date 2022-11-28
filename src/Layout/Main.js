@@ -12,6 +12,7 @@ const Main = () => {
             <div className='max-w-[1000px] mx-auto'>
                 <Outlet></Outlet>
             </div>
+            {/* <Outlet></Outlet> */}
 
             <Footer></Footer>
         </div>
