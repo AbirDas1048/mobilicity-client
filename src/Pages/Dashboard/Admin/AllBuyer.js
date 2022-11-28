@@ -57,21 +57,26 @@ const AllBuyer = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
+                            <th className='text-center'>Email</th>
+                            <th className='text-center'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            buyers.map((buyer, i) =>
-                                <tr key={buyer._id}>
-                                    <th>{++i}</th>
-                                    <td>{buyer.name}</td>
-                                    <td>{buyer.email}</td>
-                                    <td>
-                                        <label onClick={() => setDeletingBuyer(buyer)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
-                                    </td>
-                                </tr>)
+                            buyers.length > 0 ?
+                                buyers.map((buyer, i) =>
+                                    <tr key={buyer._id}>
+                                        <th>{++i}</th>
+                                        <td>{buyer.name}</td>
+                                        <td className='text-center'>{buyer.email}</td>
+                                        <td className='text-center'>
+                                            <label onClick={() => setDeletingBuyer(buyer)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
+                                        </td>
+                                    </tr>)
+                                :
+                                <tr>
+                                    <td className='text-center' colSpan="4">No Data Available</td>
+                                </tr>
                         }
 
                     </tbody>

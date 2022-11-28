@@ -75,30 +75,35 @@ const AllSeller = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th className='text-center'>Email</th>
+                            <th className='text-center'>Status</th>
+                            <th className='text-center'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            sellers.map((seller, i) =>
-                                <tr key={seller._id}>
-                                    <th>{++i}</th>
-                                    <td>{seller.name}</td>
-                                    <td>{seller.email}</td>
-                                    <td>
-                                        {
-                                            seller?.verified ?
-                                                <p className='text-success font-bold'>Verified</p>
-                                                :
-                                                <button onClick={() => handleVerify(seller._id)} className='btn btn-xs btn-warning'>Make verified</button>
-                                        }
-                                    </td>
-                                    <td>
-                                        <label onClick={() => setDeletingSeller(seller)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
-                                    </td>
-                                </tr>)
+                            sellers.length > 0 ?
+                                sellers.map((seller, i) =>
+                                    <tr key={seller._id}>
+                                        <th>{++i}</th>
+                                        <td>{seller.name}</td>
+                                        <td className='text-center'>{seller.email}</td>
+                                        <td className='text-center'>
+                                            {
+                                                seller?.verified ?
+                                                    <p className='text-success font-bold'>Verified</p>
+                                                    :
+                                                    <button onClick={() => handleVerify(seller._id)} className='btn btn-xs btn-warning'>Make verified</button>
+                                            }
+                                        </td>
+                                        <td className='text-center'>
+                                            <label onClick={() => setDeletingSeller(seller)} htmlFor="confirmation-modal" className="btn btn-sm btn-error">Delete</label>
+                                        </td>
+                                    </tr>)
+                                :
+                                <tr>
+                                    <td className='text-center' colSpan="5">No Data Available</td>
+                                </tr>
                         }
 
                     </tbody>
