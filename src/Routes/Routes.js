@@ -39,20 +39,20 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/dashboard',
-        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        path: '/adminDashboard',
+        element: <PrivateRoute><AdminRoute><DashboardLayout></DashboardLayout></AdminRoute></PrivateRoute>,
         errorElement: <DisplayError></DisplayError>,
         children: [
             {
-                path: '/dashboard',
-                element: <AllBuyer></AllBuyer>
+                path: '/adminDashboard',
+                element: <AdminRoute><AllBuyer></AllBuyer></AdminRoute>
             },
             {
-                path: '/dashboard/allBuyer',
-                element: <AllBuyer></AllBuyer>
+                path: '/adminDashboard/allBuyer',
+                element: <AdminRoute><AllBuyer></AllBuyer></AdminRoute>
             },
             {
-                path: '/dashboard/allSeller',
+                path: '/adminDashboard/allSeller',
                 element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
             // {

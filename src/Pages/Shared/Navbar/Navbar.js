@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Assets/logo.png';
 import { AuthContext } from '../../../Context/AuthProvider';
+import useAdmin from '../../../Hooks/useAdmin';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email);
 
     const handleLogout = () => {
         logOut()
@@ -30,7 +32,10 @@ const Navbar = () => {
             {
                 user?.uid ?
                     <>
-                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        {
+                            isAdmin && <li><Link to="/adminDashboard">Dashboard</Link></li>
+                        }
+
                         <li><button onClick={handleLogout}>LogOut</button></li>
                     </>
 
@@ -48,7 +53,7 @@ const Navbar = () => {
             </label>
         </>
     return (
-        <div className="navbar flex justify-between">
+        <div className="navbar sticky top-0 shadow-sm flex justify-between bg-base-100 text-base-content bg-opacity-90 z-30">
             {/* <div className="sticky top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-sm"> */}
             <div className="navbar-start">
                 <div className="dropdown">
@@ -70,9 +75,9 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+            {/* <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                 <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
-            </label>
+            </label> */}
 
 
         </div >

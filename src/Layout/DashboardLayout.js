@@ -10,32 +10,32 @@ const DashboardLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="drawer drawer-mobile">
+
+            <div className="drawer">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
-
-                    <Outlet></Outlet>
-
+                    <div className="m-4 flex justify-end">
+                        <label htmlFor="dashboard-drawer" className="btn btn-xs btn-accent drawer-button">Open dashboard menu</label>
+                    </div>
+                    <div className="px-10">
+                        <Outlet></Outlet>
+                    </div>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
 
-                        {/* <li><Link to='/dashboard'>My Appointments</Link></li> */}
                         {
                             isAdmin &&
                             <>
-                                <li><Link to='/dashboard/allBuyer'>All Buyer</Link></li>
-                                <li><Link to='/dashboard/allSeller'>All Seller</Link></li>
-                                {/* <li><Link to='/dashboard/manageDoctors'>Manage Doctor</Link></li> */}
+                                <li><Link to='/adminDashboard/allBuyer'>All Buyer</Link></li>
+                                <li><Link to='/adminDashboard/allSeller'>All Seller</Link></li>
                             </>
                         }
 
                     </ul>
-
                 </div>
             </div>
-            <Outlet></Outlet>
         </div>
     );
 };
