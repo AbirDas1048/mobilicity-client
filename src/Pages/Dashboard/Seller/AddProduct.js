@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider';
 import Loading from '../../Shared/Loading/Loading';
+import { format } from 'date-fns';
 
 // Ram: 3 / 4 GB, Rom: 32 / 64 GB, Battery: 7040mAh, Main Camera: 8mp, Selfie Camera: 5mp 
 
@@ -13,8 +14,7 @@ const AddProduct = () => {
     const [categories, setCategories] = useState([]);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = process.env.REACT_APP_imgdb_key;
-    const date = new Date();
-    console.log(date);
+    const date = format(new Date(), 'PP');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,9 +25,9 @@ const AddProduct = () => {
             })
     }, [])
 
-    // if (!categories) {
-    //     return <Loading></Loading>
-    // }
+    if (!categories) {
+        return <Loading></Loading>
+    }
 
     const handleAddProduct = (data) => {
         //console.log(data);
@@ -47,6 +47,7 @@ const AddProduct = () => {
                     const product = {
                         productName: data.productName,
                         price: data.price,
+                        originalPrice: data.originalPrice,
                         condition: data.condition,
                         sellerContact: data.sellerContact,
                         location: data.location,
@@ -55,6 +56,7 @@ const AddProduct = () => {
                         usesYear: data.usesYear,
                         image: imgData.data.url,
                         email: user?.email,
+                        postedOn: date,
                         advertise: false,
                         availability: true
                     }
@@ -103,6 +105,14 @@ const AddProduct = () => {
                             required: "Price is Required"
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.price && <p className='text-red-500'>{errors.price.message}</p>}
+                    </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"> <span className="label-text">Original Price</span></label>
+                        <input type="text" {...register("originalPrice", {
+                            required: "Original Price is Required"
+                        })} className="input input-bordered w-full max-w-xs" />
+                        {errors.originalPrice && <p className='text-red-500'>{errors.originalPrice.message}</p>}
                     </div>
 
                     <div className="form-control w-full max-w-xs">

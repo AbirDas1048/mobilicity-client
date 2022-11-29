@@ -5,9 +5,7 @@ import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const Main = () => {
     return (
-        <div style={{
-            scrollBehavior: 'smooth', scrollPaddingTop: '5rem'
-        }}>
+        <div>
             <Navbar></Navbar>
             <div className='max-w-[1000px] mx-auto'>
                 <Outlet></Outlet>

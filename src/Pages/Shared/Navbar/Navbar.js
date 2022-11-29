@@ -8,8 +8,12 @@ import useSeller from '../../../Hooks/useSeller';
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+
     const [isAdmin] = useAdmin(user?.email);
     const [isSeller] = useSeller(user?.email);
+
+    //console.log(user);
+
 
     const handleLogout = () => {
         logOut()

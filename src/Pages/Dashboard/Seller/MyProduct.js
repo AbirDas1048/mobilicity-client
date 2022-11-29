@@ -79,6 +79,7 @@ const MyProduct = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Price</th>
+                            <th>Original Price</th>
                             <th className='text-center'>Sales Status</th>
                             <th className='text-center'>Advertised Status</th>
                             <th className='text-center'>Action</th>
@@ -92,6 +93,7 @@ const MyProduct = () => {
                                         <th>{++i}</th>
                                         <td>{product.productName}</td>
                                         <td>{product.price}</td>
+                                        <td>{product.originalPrice}</td>
                                         <td className='text-center'>
                                             {
                                                 product?.availability ?
@@ -115,7 +117,7 @@ const MyProduct = () => {
                                     </tr>)
                                 :
                                 <tr>
-                                    <td className='text-center' colSpan="6">No Data Available</td>
+                                    <td className='text-center' colSpan="7">No Data Available</td>
                                 </tr>
                         }
 

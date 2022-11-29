@@ -7,42 +7,50 @@ import toast from 'react-hot-toast';
 import useToken from '../../Hooks/useToken';
 
 const Register = () => {
+
     const { createUser, updateUser } = useContext(AuthContext);
-    const [signUpError, setSignUPError] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [createdUserToken, setCreatedUserToken] = useState('');
-    const [token] = useToken(createdUserToken);
+    const [signUpError, setSignUPError] = useState('');
+
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
 
     const navigate = useNavigate();
+
     if (token) {
         navigate('/');
     }
 
-    const handleSignUp = (data) => {
+    const handleSignUp = async (data) => {
         data.method = "manual";
         setSignUPError('');
-        createUser(data.email, data.password)
+        await createUser(data.email, data.password)
             .then(result => {
+
                 const user = result.user;
-                // console.log(user);
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
+
                         saveUser(data.name, data.email, data.role, data.method, user.uid)
                     })
-                    .catch(err => console.log(err));
+                    .catch(err => {
+                        console.log(err);
+
+                    });
             })
             .catch(error => {
                 //console.log(error)
-                setSignUPError(error.message)
+                setSignUPError(error.message);
+
             });
     }
 
-    const saveUser = (name, email, role, method, uid) => {
+    const saveUser = async (name, email, role, method, uid) => {
         const newUser = { name, email, role, method, uid };
-        fetch('http://localhost:5000/users', {
+        await fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -51,18 +59,19 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                //console.log(data);
                 if (data.acknowledged) {
                     toast.success(data.message);
-                    setCreatedUserToken(email);
+                    setCreatedUserEmail(email);
 
                 }
                 else {
+
                     toast.error(data.message);
                 }
 
             })
     }
+
     return (
         <div className='h-[700px] flex justify-center items-center'>
             <div className='w-96 p-7'>
