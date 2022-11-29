@@ -7,7 +7,7 @@ import Slider from '../Slider/Slider';
 
 const Home = () => {
 
-    const { data: products, isLoading, refetch } = useQuery({
+    const { data: products = [], isLoading, refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
             try {
@@ -28,14 +28,14 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
-            <div className='grid grid-cols-1 lg:grid-cols-4 gap-4'>
+            <div className='grid grid-cols-1 lg:grid-cols-4 gap-4 my-10'>
                 <div>
                     <Categories></Categories>
                 </div>
                 <div className='col-span-3'>
                     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
                         {
-                            products.map(product => <Product key={product._id} product={product}></Product>)
+                            products.map(product => <Product key={product._id} product={product} refetch={refetch}></Product>)
                         }
                     </div>
                 </div>

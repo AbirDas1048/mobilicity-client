@@ -23,7 +23,7 @@ const Categories = () => {
             <h2 className='text-xl text-center mb-2'>All Category</h2>
             <ul className="menu menu-horizontal lg:menu-vertical bg-base-100 rounded-box">
                 {
-                    categories.map(category => <li key={category._id} className="border "><Link to="">{category.name}</Link></li>)
+                    categories.map(category => <li key={category._id} className="border "><Link to={`/categories/${category._id}`}>{category.name}</Link></li>)
                 }
             </ul>
         </div>
