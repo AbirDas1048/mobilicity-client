@@ -32,7 +32,5 @@ Live website link [Mobilicity](https://mobilicity-ea121.web.app/).
 
 ### Admin Login Credential
 
-    Email: admin@admin.com
-    Password: 123456
-
-    
+    adminEmail: admin@admin.com
+    adminPassword: 123456
