@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Loading from '../../Shared/Loading/Loading';
 import Category from './Category';
@@ -7,10 +8,16 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
+        // fetch('http://localhost:5000/categories')
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         setCategories(data);
+        //     })
+
+        axios.get('http://localhost:5000/categories')
             .then(data => {
-                setCategories(data);
+                //console.log(data.data);
+                setCategories(data.data);
             })
     }, []);
 

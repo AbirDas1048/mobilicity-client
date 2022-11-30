@@ -6,10 +6,6 @@ import Loading from '../../Shared/Loading/Loading';
 
 const MyOrder = () => {
     const { user } = useContext(AuthContext);
-    //const [deletingProduct, setDeletingProduct] = useState(null);
-    // const closeModal = () => {
-    //     setDeletingProduct(null);
-    // }
     const { data: orders, isLoading, refetch } = useQuery({
         queryKey: ['orders'],
         queryFn: async () => {
@@ -46,9 +42,6 @@ const MyOrder = () => {
                             <th>Name</th>
                             <th className='text-center'>Price</th>
                             <th className='text-center'>Pay Status</th>
-                            {/* <th className='text-center'>Sales Status</th>
-                            <th className='text-center'>Advertised Status</th>
-                            <th className='text-center'>Action</th> */}
                         </tr>
                     </thead>
                     <tbody>

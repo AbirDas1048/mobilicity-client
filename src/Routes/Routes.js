@@ -8,7 +8,6 @@ import Register from "../Pages/Auth/Register";
 import AllBuyer from "../Pages/Dashboard/Admin/AllBuyer";
 import AllSeller from "../Pages/Dashboard/Admin/AllSeller";
 import MyOrder from "../Pages/Dashboard/Buyer/MyOrder";
-import MyWishlist from "../Pages/Dashboard/Buyer/MyWishlist";
 import Payment from "../Pages/Dashboard/Buyer/Payment/Payment";
 import AddProduct from "../Pages/Dashboard/Seller/AddProduct";
 import MyProduct from "../Pages/Dashboard/Seller/MyProduct";
@@ -105,24 +104,12 @@ const router = createBrowserRouter([
                 element: <BuyerRoute><MyOrder></MyOrder></BuyerRoute>
             },
             {
-                path: '/buyerDashboard/myWishlist',
-                element: <BuyerRoute><MyWishlist></MyWishlist></BuyerRoute>
-            },
-            // {
-            //     path: '/buyerDashboard/payment/',
-            //     element: <BuyerRoute><MyWishlist></MyWishlist></BuyerRoute>
-            // },
-            {
                 path: '/buyerDashboard/payment/:id',
                 loader: ({ params }) => fetch(`http://localhost:5000/buyer/productPayment/${params.id}`),
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>
 
             },
-            // {
-            //     path: '/buyerDashboard/demo/:id',
-            //     loader: ({ params }) => fetch(`http://localhost:5000/buyer/categories/${params.id}`),
-            //     element: <BuyerRoute><Demo></Demo></BuyerRoute>
-            // }
+
         ]
     }
 ])
