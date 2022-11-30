@@ -29,7 +29,7 @@ const BuyerDashboardLayout = () => {
                             isBuyer &&
                             <>
                                 <li><Link to='/buyerDashboard/myOrder'>My Order</Link></li>
-                                <li><Link to='/buyerDashboard/myWishlist'>My Wishlist</Link></li>
+                                {/* <li><Link to='/buyerDashboard/myWishlist'>My Wishlist</Link></li> */}
                             </>
                         }
 

@@ -6,6 +6,7 @@ import SellerDashboardLayout from "../Layout/SellerDashboardLayout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
 import AllBuyer from "../Pages/Dashboard/Admin/AllBuyer";
+import AllReport from "../Pages/Dashboard/Admin/AllReport";
 import AllSeller from "../Pages/Dashboard/Admin/AllSeller";
 import MyOrder from "../Pages/Dashboard/Buyer/MyOrder";
 import Payment from "../Pages/Dashboard/Buyer/Payment/Payment";
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
             {
                 path: '/adminDashboard/allSeller',
                 element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
+            },
+            {
+                path: '/adminDashboard/allReport',
+                element: <AdminRoute><AllReport></AllReport></AdminRoute>
             },
         ]
     },
