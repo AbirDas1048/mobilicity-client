@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Loading from '../../Shared/Loading/Loading';
+import About from '../About/About';
 import Categories from '../Categories/Categories';
 import Product from '../Products/Product';
 import Slider from '../Slider/Slider';
@@ -38,6 +39,7 @@ const Home = () => {
 
             <div>
                 <Categories></Categories>
+                <About></About>
             </div>
 
         </div>

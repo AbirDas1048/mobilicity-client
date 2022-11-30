@@ -5,6 +5,7 @@ import Main from "../Layout/Main";
 import SellerDashboardLayout from "../Layout/SellerDashboardLayout";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
+import Blogs from "../Pages/Blogs/Blogs";
 import AllBuyer from "../Pages/Dashboard/Admin/AllBuyer";
 import AllReport from "../Pages/Dashboard/Admin/AllReport";
 import AllSeller from "../Pages/Dashboard/Admin/AllSeller";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: '/home',
                 element: <Home></Home>
+            },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
             },
             {
                 path: '/login',
