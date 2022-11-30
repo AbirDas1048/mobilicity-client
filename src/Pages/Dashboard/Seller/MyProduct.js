@@ -16,7 +16,7 @@ const MyProduct = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/sellers/products?email=${user?.email}`, {
+                const res = await fetch(`https://mobilicity-server.vercel.app/sellers/products?email=${user?.email}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -35,7 +35,7 @@ const MyProduct = () => {
     }
 
     const handleDelete = product => {
-        fetch(`http://localhost:5000/sellers/products/${product._id}`, {
+        fetch(`https://mobilicity-server.vercel.app/sellers/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -53,7 +53,7 @@ const MyProduct = () => {
 
     const handleAdvertise = (id) => {
         //console.log(id);
-        fetch(`http://localhost:5000/sellers/products/${id}`, {
+        fetch(`https://mobilicity-server.vercel.app/sellers/products/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

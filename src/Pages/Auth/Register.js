@@ -50,7 +50,7 @@ const Register = () => {
 
     const saveUser = async (name, email, role, method, uid) => {
         const newUser = { name, email, role, method, uid };
-        await fetch('http://localhost:5000/users', {
+        await fetch('https://mobilicity-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

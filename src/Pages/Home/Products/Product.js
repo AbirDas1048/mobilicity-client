@@ -16,7 +16,7 @@ const Product = ({ product, setProductData, from }) => {
     const [reportLoading, setReportLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/buyer/bookingsCheck?buyerEmail=${user?.email}&productId=${product?._id}`)
+        fetch(`https://mobilicity-server.vercel.app/buyer/bookingsCheck?buyerEmail=${user?.email}&productId=${product?._id}`)
             .then(res => res.json())
             .then(data => {
                 setShowModalButton(data.acknowledged);
@@ -25,7 +25,7 @@ const Product = ({ product, setProductData, from }) => {
     }, [user?.email, product?._id])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/buyer/reportsCheck?buyerEmail=${user?.email}&productId=${product?._id}`)
+        fetch(`https://mobilicity-server.vercel.app/buyer/reportsCheck?buyerEmail=${user?.email}&productId=${product?._id}`)
             .then(res => res.json())
             .then(data => {
                 setShowReportButton(data.acknowledged);
@@ -48,7 +48,7 @@ const Product = ({ product, setProductData, from }) => {
 
         //console.log(report);
 
-        fetch('http://localhost:5000/buyer/reportToAdmin', {
+        fetch('https://mobilicity-server.vercel.app/buyer/reportToAdmin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

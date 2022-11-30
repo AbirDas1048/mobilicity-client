@@ -13,7 +13,7 @@ const AllSeller = () => {
         queryKey: ['sellers'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/admin/sellers', {
+                const res = await fetch('https://mobilicity-server.vercel.app/admin/sellers', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -32,7 +32,7 @@ const AllSeller = () => {
     }
 
     const handleDelete = seller => {
-        fetch(`http://localhost:5000/admin/sellers/${seller._id}`, {
+        fetch(`https://mobilicity-server.vercel.app/admin/sellers/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -50,7 +50,7 @@ const AllSeller = () => {
 
     const handleVerify = (id) => {
         //console.log(id);
-        fetch(`http://localhost:5000/admin/sellers/${id}`, {
+        fetch(`https://mobilicity-server.vercel.app/admin/sellers/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

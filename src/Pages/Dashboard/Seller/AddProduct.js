@@ -18,7 +18,7 @@ const AddProduct = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://mobilicity-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => {
                 setCategories(data);
@@ -61,7 +61,7 @@ const AddProduct = () => {
                         availability: true
                     }
 
-                    fetch('http://localhost:5000/sellers/products', {
+                    fetch('https://mobilicity-server.vercel.app/sellers/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

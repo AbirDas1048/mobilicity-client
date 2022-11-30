@@ -32,7 +32,7 @@ const SocialLogin = () => {
 
     const saveUser = (name, email, role, method, uid) => {
         const newUser = { name, email, role, method, uid };
-        fetch('http://localhost:5000/users', {
+        fetch('https://mobilicity-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

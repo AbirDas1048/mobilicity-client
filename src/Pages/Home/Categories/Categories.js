@@ -8,13 +8,13 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        // fetch('http://localhost:5000/categories')
+        // fetch('https://mobilicity-server.vercel.app/categories')
         //     .then(res => res.json())
         //     .then(data => {
         //         setCategories(data);
         //     })
 
-        axios.get('http://localhost:5000/categories')
+        axios.get('https://mobilicity-server.vercel.app/categories')
             .then(data => {
                 //console.log(data.data);
                 setCategories(data.data);

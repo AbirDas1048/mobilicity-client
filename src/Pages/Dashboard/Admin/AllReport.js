@@ -13,7 +13,7 @@ const AllReport = () => {
         queryKey: ['reports'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/admin/reports', {
+                const res = await fetch('https://mobilicity-server.vercel.app/admin/reports', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -32,7 +32,7 @@ const AllReport = () => {
     }
 
     const handleDelete = report => {
-        fetch(`http://localhost:5000/admin/deleteReportedItem/${report.productId}`, {
+        fetch(`https://mobilicity-server.vercel.app/admin/deleteReportedItem/${report.productId}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

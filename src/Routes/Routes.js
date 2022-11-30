@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             {
                 path: '/categories/:id',
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+                loader: ({ params }) => fetch(`https://mobilicity-server.vercel.app/categories/${params.id}`)
             },
             {
                 path: '/*',
@@ -115,7 +115,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/buyerDashboard/payment/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/buyer/productPayment/${params.id}`),
+                loader: ({ params }) => fetch(`https://mobilicity-server.vercel.app/buyer/productPayment/${params.id}`),
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>
 
             },

@@ -12,7 +12,7 @@ const Home = () => {
         queryKey: ['products'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/advertisedProducts`);
+                const res = await fetch(`https://mobilicity-server.vercel.app/advertisedProducts`);
                 const data = await res.json();
                 return data;
             }

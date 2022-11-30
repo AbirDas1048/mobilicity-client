@@ -22,7 +22,7 @@ const BookNow = ({ productData, setProductData }) => {
             price: productData.price
         }
 
-        fetch('http://localhost:5000/buyer/bookings', {
+        fetch('https://mobilicity-server.vercel.app/buyer/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
