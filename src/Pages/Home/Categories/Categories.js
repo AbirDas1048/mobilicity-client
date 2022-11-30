@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from '../../Shared/Loading/Loading';
+import Category from './Category';
 
 const Categories = () => {
 
@@ -19,13 +20,13 @@ const Categories = () => {
     }
 
     return (
-        <div className='text-center'>
-            <h2 className='text-xl text-center mb-2'>All Category</h2>
-            <ul className="menu menu-horizontal lg:menu-vertical bg-base-100 rounded-box">
+        <div className='my-5'>
+            <h2 className='my-3 text-center text-3xl'>All Brands</h2>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
                 {
-                    categories.map(category => <li key={category._id} className="border "><Link to={`/categories/${category._id}`}>{category.name}</Link></li>)
+                    categories.map(category => <Category key={category._id} category={category} ></Category>)
                 }
-            </ul>
+            </div>
         </div>
     );
 };

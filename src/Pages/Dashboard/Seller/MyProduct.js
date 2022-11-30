@@ -78,8 +78,8 @@ const MyProduct = () => {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Original Price</th>
+                            <th className='text-center'>Resale Price</th>
+                            <th className='text-center'>Original Price</th>
                             <th className='text-center'>Sales Status</th>
                             <th className='text-center'>Advertised Status</th>
                             <th className='text-center'>Action</th>
@@ -92,8 +92,8 @@ const MyProduct = () => {
                                     <tr key={product._id}>
                                         <th>{++i}</th>
                                         <td>{product.productName}</td>
-                                        <td>{product.price}</td>
-                                        <td>{product.originalPrice}</td>
+                                        <td className='text-center'>{product.price}</td>
+                                        <td className='text-center'>{product.originalPrice}</td>
                                         <td className='text-center'>
                                             {
                                                 product?.availability ?
