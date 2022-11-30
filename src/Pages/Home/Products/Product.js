@@ -34,8 +34,8 @@ const Product = ({ product, setProductData, from }) => {
                     {productName}
                     <div className="badge badge-secondary">{condition}</div>
                 </h2>
-                <p>Resale Price: {price}TK</p>
-                <p>Original Price: {originalPrice}TK</p>
+                <p>Resale Price: ${price}</p>
+                <p>Original Price: ${originalPrice}</p>
                 <p>{description}</p>
                 <p>Location: {location}</p>
                 {

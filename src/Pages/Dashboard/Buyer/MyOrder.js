@@ -33,40 +33,6 @@ const MyOrder = () => {
     }
 
 
-    // const handleDelete = product => {
-    //     fetch(`http://localhost:5000/sellers/products/${product._id}`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             authorization: `bearer ${localStorage.getItem('accessToken')}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.deletedCount > 0) {
-    //                 refetch();
-    //                 toast.success(`${product.productName} Deleted Successfully`);
-    //             }
-
-    //         })
-    // }
-
-    // const handleAdvertise = (id) => {
-    //     //console.log(id);
-    //     fetch(`http://localhost:5000/sellers/products/${id}`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             authorization: `bearer ${localStorage.getItem('accessToken')}`
-    //         }
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             if (data.modifiedCount > 0) {
-    //                 toast.success('Successfully Updated');
-    //                 refetch();
-    //             }
-    //         })
-    // }
     return (
         <div>
             <h2 className='text-3xl text-center my-3'>My Orders</h2>
